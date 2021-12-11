@@ -1,6 +1,20 @@
 {
   "name": "ele-easy-table-next",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "private": false,
+  "author": "vincentzyc",
+  "description": "基于 Vue3、Element Plus 开发的一款表格组件，对Element Plus的el-table进行二次封装",
+  "keywords": [
+    "component",
+    "vue3",
+    "element plus",
+    "el-table"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vincentzyc/ele-easy-table-next"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
