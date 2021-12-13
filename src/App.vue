@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import EleEasyTableDemo from './components/ele-easy-table-demo.vue'
+import EleEasyTableDemo from './components/EleEasyTableDemo.vue'
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 </script>
@@ -9,7 +9,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 <template>
   <el-config-provider :locale="zhCn">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <EleEasyTableDemo />
+    <EleEasyTableDemo msg="EleEasyTableDemo"/>
   </el-config-provider>
 </template>
 
