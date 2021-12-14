@@ -22,6 +22,7 @@
         :label="table.indexLabel || '序号'"
         align="center"
         type="index"
+        :index="tableIndex"
         v-if="table.showIndex !== false"
         width="55"
       ></el-table-column>
@@ -80,7 +81,8 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts">import { nextTick, ref, watch } from 'vue'
+
 export default {
   name: "EleEasyTable"
 }
@@ -111,19 +113,29 @@ const props = defineProps({
 
 const emit = defineEmits(['update:formData', 'get-list'])
 
+const tableIndex = ref(0)
+
+watch(() => props.table.list, () => {
+  if (props.formData.totalCount > 0) {
+    let maxPageIndex = Math.ceil(props.formData.totalCount / props.formData.pageSize);
+    if (props.formData.pageIndex > maxPageIndex) props.formData.pageIndex = maxPageIndex;
+  }
+  if (props.formData.pageSize > 0 && props.formData.pageIndex > 0) {
+    tableIndex.value = props.formData.pageSize * (props.formData.pageIndex - 1) + 1;
+  } else {
+    tableIndex.value = 1; //没有翻页功能
+  }
+}, { immediate: true })
+
 function handleSizeChange(val: number) {
-  emit('update:formData', {
-    ...props.formData,
-    pageIndex: 1,
-    pageSize: val
-  })
+  props.formData.pageIndex = 1
+  props.formData.pageSize = val
+  emit('update:formData', props.formData)
   emit('get-list');
 }
-function handleCurrentChange(val: number) {
-  emit('update:formData', {
-    ...props.formData,
-    pageIndex: val
-  })
+async function handleCurrentChange(val: number) {
+  props.formData.pageIndex = val
+  emit('update:formData', props.formData)
   emit('get-list');
 }
 

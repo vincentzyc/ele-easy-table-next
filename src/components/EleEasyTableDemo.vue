@@ -158,7 +158,6 @@ function getList(): any {
   );
 }
 async function handleSearch() {
-  console.log(formData);
   table.list = getList()
 }
 function handleSelectionChange(multipleSelection: any) {
