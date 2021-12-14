@@ -14,20 +14,25 @@
           <Draggable
             :animation="166"
             :group="{ name: 'customColumn' }"
-            :list="allColumns"
             class="el-checkbox-wrapper"
             ghostClass="ghost"
             handle=".el-checkbox__label"
+            item-key="key"
+            tag="ul"
+            v-model="allColumns"
           >
-            <!-- <el-tooltip v-for="item in allColumns" :key="item.key" :content="item.label" :open-delay="800" placement="top"> -->
-            <el-checkbox
-              :disabled="item.disabledCustom"
-              :key="item.key"
-              :label="item.key"
-              v-for="item in allColumns"
-              v-show="showColumns.includes(item.key)"
-            >{{ item.label }}</el-checkbox>
-            <!-- </el-tooltip> -->
+            <template #item="{ element }">
+              <li>
+                <!-- <el-tooltip :key="element.key" :content="element.label" :open-delay="800" placement="top"> -->
+                <el-checkbox
+                  :disabled="element.disabledCustom"
+                  :key="element.key"
+                  :label="element.key"
+                  v-show="showColumns.includes(element.key)"
+                >{{ element.label }}</el-checkbox>
+                <!-- </el-tooltip> -->
+              </li>
+            </template>
           </Draggable>
         </el-checkbox-group>
         <div class="text-center" slot="footer">
@@ -112,8 +117,8 @@ function getLStorage(key: string) {
     window.location.reload();
   }
 }
-function searchColumns(v = '') {
-  showColumns.value = allColumns.value.filter(val => val.label.toUpperCase().includes(v.toUpperCase())).map(v => v.key)
+function searchColumns(word = '') {
+  showColumns.value = allColumns.value.filter(val => val.label.toUpperCase().includes(word.toUpperCase())).map(v => v.key)
   handleCheckedColumnsChange()
 }
 async function initLocalStorage() {
@@ -127,7 +132,7 @@ async function initLocalStorage() {
     props.baseColumns.forEach(item => {
       if (!checkedColumns.includes(item.key)) allColumns.value.push(item);
     })
-    allColumns.value = hadCheckedColumns.concat(allColumns);
+    allColumns.value = hadCheckedColumns.concat(allColumns.value);
     disabledCustoms.value = allColumns.value.filter(item => item.disabledCustom).map(v => v.key)
     showColumns.value = allColumns.value.map(v => v.key);
     await nextTick()
