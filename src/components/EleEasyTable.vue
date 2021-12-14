@@ -68,9 +68,9 @@
     >
       <el-pagination
         :current-page="formData.pageIndex || 1"
-        :layout="typeof (pagination) === 'object' ? pagination.layout || 'total, sizes, prev, pager, next, jumper'"
+        :layout="typeof (pagination) === 'object' ? pagination.layout : 'total, sizes, prev, pager, next, jumper'"
         :page-size="formData.pageSize || 10"
-        :page-sizes="typeof (pagination) === 'object' ? pagination.pageSizes || [10, 20, 50, 100]"
+        :page-sizes="typeof (pagination) === 'object' ? pagination.pageSizes : [10, 20, 50, 100]"
         :total="formData.totalCount || 0"
         @current-change="handleCurrentChange"
         @size-change="handleSizeChange"
@@ -109,7 +109,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:formData', 'update:formData', 'get-list'])
+const emit = defineEmits(['update:formData', 'get-list'])
 
 function handleSizeChange(val: number) {
   emit('update:formData', {
