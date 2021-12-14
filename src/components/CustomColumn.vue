@@ -1,43 +1,45 @@
 <template>
-  <el-dialog :showClose="false" :visible.sync="visible" class="custom-column-wrapper" width="880px">
-    <template slot="title">
-      <div class="custom-column-title-wrapper">
-        <div class="custom-column-title">自定义列</div>
-        <span class="custom-column-search">搜索列：</span>
-        <el-input @input="searchColumns" placeholder="请输入列名称" size="mini" style="width:200px" v-model="keyWord"></el-input>
+  <div class="custom-column-wrapper">
+    <el-dialog v-model="visible" :show-close="false" width="880px">
+      <template slot="title">
+        <div class="custom-column-title-wrapper">
+          <div class="custom-column-title">自定义列</div>
+          <span class="custom-column-search">搜索列：</span>
+          <el-input @input="searchColumns" placeholder="请输入列名称" size="mini" style="width:200px" v-model="keyWord"></el-input>
+        </div>
+      </template>
+      <div v-show="showColumns.length > 0">
+        <el-checkbox :indeterminate="isIndeterminate" @change="handleCheckAllChange" v-model="checkAll">全选</el-checkbox>
+        <el-checkbox-group @change="handleCheckedColumnsChange" v-model="checkedColumns">
+          <Draggable
+            :animation="166"
+            :group="{ name: 'customColumn' }"
+            :list="allColumns"
+            class="el-checkbox-wrapper"
+            ghostClass="ghost"
+            handle=".el-checkbox__label"
+          >
+            <!-- <el-tooltip v-for="item in allColumns" :key="item.key" :content="item.label" :open-delay="800" placement="top"> -->
+            <el-checkbox
+              :disabled="item.disabledCustom"
+              :key="item.key"
+              :label="item.key"
+              v-for="item in allColumns"
+              v-show="showColumns.includes(item.key)"
+            >{{ item.label }}</el-checkbox>
+            <!-- </el-tooltip> -->
+          </Draggable>
+        </el-checkbox-group>
+        <div class="text-center" slot="footer">
+          <el-button @click="cancel()">取 消</el-button>
+          <el-button @click="confirm()" type="primary">确 定</el-button>
+        </div>
       </div>
-    </template>
-    <div v-show="showColumns.length > 0">
-      <el-checkbox :indeterminate="isIndeterminate" @change="handleCheckAllChange" v-model="checkAll">全选</el-checkbox>
-      <el-checkbox-group @change="handleCheckedColumnsChange" v-model="checkedColumns">
-        <Draggable
-          :animation="166"
-          :group="{ name: 'customColumn' }"
-          :list="allColumns"
-          class="el-checkbox-wrapper"
-          ghostClass="ghost"
-          handle=".el-checkbox__label"
-        >
-          <!-- <el-tooltip v-for="item in allColumns" :key="item.key" :content="item.label" :open-delay="800" placement="top"> -->
-          <el-checkbox
-            :disabled="item.disabledCustom"
-            :key="item.key"
-            :label="item.key"
-            v-for="item in allColumns"
-            v-show="showColumns.includes(item.key)"
-          >{{ item.label }}</el-checkbox>
-          <!-- </el-tooltip> -->
-        </Draggable>
-      </el-checkbox-group>
-      <div class="text-center" slot="footer">
-        <el-button @click="cancel()">取 消</el-button>
-        <el-button @click="confirm()" type="primary">确 定</el-button>
+      <div v-show="showColumns.length === 0">
+        <p class="text-center custom-column-search">暂无列数据</p>
       </div>
-    </div>
-    <div v-show="showColumns.length === 0">
-      <p class="text-center custom-column-search">暂无列数据</p>
-    </div>
-  </el-dialog>
+    </el-dialog>
+  </div>
 </template>
 
 
@@ -114,7 +116,7 @@ function searchColumns(v = '') {
   showColumns.value = allColumns.value.filter(val => val.label.toUpperCase().includes(v.toUpperCase())).map(v => v.key)
   handleCheckedColumnsChange()
 }
-function initLocalStorage() {
+async function initLocalStorage() {
   let checkedColumns = getLStorage(props.localName) || props.defaultColumns;
   if (Array.isArray(checkedColumns) && checkedColumns.length > 0) {
     let hadCheckedColumns: Record<string, any>[] = [], checkedColumn: Record<string, any> | undefined = {};
@@ -128,6 +130,7 @@ function initLocalStorage() {
     allColumns.value = hadCheckedColumns.concat(allColumns);
     disabledCustoms.value = allColumns.value.filter(item => item.disabledCustom).map(v => v.key)
     showColumns.value = allColumns.value.map(v => v.key);
+    await nextTick()
     emit('update:columns', hadCheckedColumns);
     return setLStorage(props.localName, checkedColumns);
   }
