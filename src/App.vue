@@ -8,8 +8,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 <template>
   <el-config-provider :locale="zhCn">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <EleEasyTableDemo msg="EleEasyTableDemo"/>
+    <EleEasyTableDemo/>
   </el-config-provider>
 </template>
 
