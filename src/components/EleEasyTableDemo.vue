@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button @click="test1()" size="small" type="primary">测试测试</el-button>
+    <el-button @click="test1()" size="small" type="primary">自定义列</el-button>
     <EleEasyTable
       :table="table"
       v-model:formData="formData"
