@@ -81,11 +81,12 @@
   </div>
 </template>
 
-<script lang="ts">import { nextTick, ref, watch } from 'vue'
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue'
 
-export default {
+export default defineComponent({
   name: "EleEasyTable"
-}
+})
 </script>
 
 <script lang="ts" setup>
