@@ -49,13 +49,14 @@
 
 
 <script lang="ts">
-export default {
+import { defineComponent, nextTick, ref, watch } from 'vue'
+
+export default defineComponent({
   name: "CustomColumn"
-}
+})
 </script>
 
 <script lang="ts" setup>
-import { nextTick, ref, watch } from 'vue'
 //  自定义表格列 && 自定义排序  
 //  <CustomColumn 
 //   :show.sync="showCustomColumn" //打开弹框
