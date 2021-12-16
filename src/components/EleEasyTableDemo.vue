@@ -9,15 +9,17 @@
       class="ele-easy-table-demo"
     >
       <template #slot2="{ row }">
-        <el-dropdown :hide-on-click="false" @command="handleView">
+        <el-dropdown>
           <span class="el-dropdown-link">
             <el-button type="text">操作</el-button>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item :command="{ item: row, handle: 'RecordDetail' }">查看详情</el-dropdown-item>
-            <el-dropdown-item :command="{ item: row, handle: 'RecordLog' }">查看日志</el-dropdown-item>
-          </el-dropdown-menu>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>查看详情</el-dropdown-item>
+              <el-dropdown-item>查看日志</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
         </el-dropdown>
       </template>
       <template #header1>
