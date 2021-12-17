@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import EleEasyTable from './index'
+
+createApp(App).use(EleEasyTable).mount('#app')
