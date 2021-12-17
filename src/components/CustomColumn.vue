@@ -1,7 +1,7 @@
 <template>
   <div class="custom-column-wrapper">
     <el-dialog v-model="visible" :show-close="false" width="880px">
-      <template slot="title">
+      <template #title>
         <div class="custom-column-title-wrapper">
           <div class="custom-column-title">自定义列</div>
           <span class="custom-column-search">搜索列：</span>
@@ -23,14 +23,12 @@
           >
             <template #item="{ element }">
               <li>
-                <!-- <el-tooltip :key="element.key" :content="element.label" :open-delay="800" placement="top"> -->
                 <el-checkbox
                   :disabled="element.disabledCustom"
                   :key="element.key"
                   :label="element.key"
                   v-show="showColumns.includes(element.key)"
                 >{{ element.label }}</el-checkbox>
-                <!-- </el-tooltip> -->
               </li>
             </template>
           </Draggable>
@@ -208,13 +206,15 @@ initLocalStorage()
 .custom-column-wrapper .el-checkbox-wrapper {
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 }
 
 .custom-column-wrapper .el-checkbox {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   margin-right: 15px;
+  height: auto;
 }
 
 .custom-column-wrapper .el-checkbox__label {
