@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-button @click="test1()" size="small" type="primary">自定义列</el-button>
     <EleEasyTable
+      :form="form"
       :table="table"
       v-model:formData="formData"
       @get-list="handleSearch"
@@ -9,23 +9,22 @@
       class="ele-easy-table-demo"
     >
       <template #slot2="{ row }">
-        <el-dropdown>
+        <el-dropdown :hide-on-click="false" @command="handleView">
           <span class="el-dropdown-link">
             <el-button type="text">操作</el-button>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>查看详情</el-dropdown-item>
-              <el-dropdown-item>查看日志</el-dropdown-item>
+              <el-dropdown-item :command="{ item: row, handle: 'RecordDetail' }">查看详情</el-dropdown-item>
+              <el-dropdown-item :command="{ item: row, handle: 'RecordLog' }">查看日志</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
       </template>
       <template #header1>
-        <span style="margin-right:8px">自定义标题</span>
-        <el-tooltip content="Top Center 提示文字" effect="dark" placement="top">
-          <i class="el-icon-info"></i>
+        <el-tooltip content="Top Center 提示文字" placement="top">
+          <span style="margin-right:8px">自定义标题</span>
         </el-tooltip>
       </template>
     </EleEasyTable>
@@ -142,6 +141,89 @@ const baseColumns = ref([{
   key: 'data5',
   label: 'APK'
 }])
+
+const form = reactive({
+  foldNum: 3,
+  config: { 'label-width': '100px' },
+  formItemStyle: {
+    width: "300px"
+  },
+  style: {
+    background: '#f2f2f2',
+    padding: '20px'
+  },
+  list: [{
+    type: 'datePicker',
+    key: 'filterStartAndEndTime',
+    startKey: 'filterStartTime',
+    endKey: 'filterEndTime',
+    label: '起止时间',
+  }, {
+    type: 'input',
+    key: 'modelName1',
+    label: '输入框1',
+    placeholder: "请输入姓名"
+  }, {
+    type: 'input',
+    key: 'modelName2',
+    label: '输入框2'
+  }, {
+    type: 'input',
+    key: 'modelName3',
+    label: '输入框3'
+  }, {
+    type: 'select',
+    key: 'productType',
+    config: {
+      filterable: true
+    },
+    options: [{
+      label: '全部',
+      value: ''
+    }, {
+      label: 'API',
+      value: 'API'
+    }, {
+      label: 'H5',
+      value: 'H5'
+    }],
+    label: '选择框'
+  }, {
+    type: 'select',
+    key: 'productName',
+    config: {
+      filterable: true
+    },
+    options: ['产品名称1', '产品名称2', '产品名称3'],
+    label: '产品名称'
+  }, {
+    type: 'select',
+    key: 'adType',
+    config: {
+      filterable: true
+    },
+    options: ['广告类型1', '广告类型2', '广告类型3'],
+    label: '广告类型'
+  }, {
+    type: 'button',
+    text: '查询',
+    handleClick: (row: any, key: number) => {
+      console.log(row, key);
+      handleSearch();
+    },
+    style: "margin-left:20px"
+  }, {
+    type: 'button',
+    text: '自定义列',
+    handleClick: () => {
+      showCustomColumn.value = true;
+    }
+  }, {
+    type: 'slot',
+    slot: 'slot1',
+    fold: false
+  }]
+})
 
 const table = reactive({
   selection: {
