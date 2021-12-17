@@ -40,9 +40,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import EleEasyTable from './EleEasyTable.vue'
 import CustomColumn from './CustomColumn.vue'
-
 
 const allList = [{
   data1: '000',
