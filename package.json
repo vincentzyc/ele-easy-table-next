@@ -15,6 +15,14 @@
     "type": "git",
     "url": "https://github.com/vincentzyc/ele-easy-table-next"
   },
+  "main": "./dist/ele-easy-table-next.umd.js",
+  "module": "./dist/ele-easy-table-next.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ele-easy-table-next.es.js",
+      "require": "./dist/ele-easy-table-next.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
