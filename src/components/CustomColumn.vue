@@ -90,9 +90,8 @@ const checkAll = ref(true)
 const allColumns = ref<any[]>([])
 const showColumns = ref<any[]>([])
 const checkedColumns = ref<any[]>([])
-const disabledCustoms = ref<any[]>([])
+const disabledCustoms = ref<string[]>([])
 const isIndeterminate = ref(false)
-
 
 watch(() => props.show, (val: boolean) => {
   if (val) initShow()
