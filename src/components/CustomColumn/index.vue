@@ -130,7 +130,7 @@ async function initLocalStorage() {
   if (props.baseColumns) allColumns.value = props.baseColumns;
   disabledCustoms.value = allColumns.value.filter(item => item.disabledCustom).map(v => v.key)
   showColumns.value = allColumns.value.map(v => v.key);
-  return emit('update:columns', props.baseColumns);
+  emit('update:columns', props.baseColumns);
 }
 function initShow() {
   keyWord.value = ''
