@@ -61,27 +61,26 @@ export default defineComponent({
 //   :show.sync="showCustomColumn" //打开弹框
 //   :localName="localName"  //存本地name
 //   :baseColumns="baseColumns"  //全部列
-//   :props.defaultColumns="props.defaultColumns" //首次默认显示的列(不传则显示全部)
+//   :props.defaultColumns="defaultColumns" //首次默认显示的列(不传则显示全部)
 //   :columns.sync="table.columns" //展示的列
 //  />
 import Draggable from 'vuedraggable'
-import { TypeProps } from './type'
+import * as Types from './type'
 
-const props = withDefaults(defineProps<TypeProps>(), {
+const props = withDefaults(defineProps<Types.Props>(), {
   show: false,
-  baseColumns: (): Record<string, any>[] => [],
-  columns: (): Record<string, any>[] => [],
+  baseColumns: (): Types.ColumnsItem[] => [],
+  columns: (): Types.ColumnsItem[] => [],
   defaultColumns: (): string[] => [],
 })
-
 
 const emit = defineEmits(['update:show', 'update:columns'])
 
 const keyWord = ref('')
 const visible = ref(false)
 const checkAll = ref(true)
-const allColumns = ref<any[]>([])
-const showColumns = ref<any[]>([])
+const allColumns = ref<Types.ColumnsItem[]>([])
+const showColumns = ref<string[]>([])
 const checkedColumns = ref<any[]>([])
 const disabledCustoms = ref<string[]>([])
 const isIndeterminate = ref(false)
