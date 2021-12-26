@@ -1,10 +1,3 @@
-export interface Props {
-  localName: string,
-  show?: boolean,
-  baseColumns?: ColumnsItem[],
-  columns?: ColumnsItem[],
-  defaultColumns?: string[]
-}
 export interface TextBtnItem {
   text: string,
   funcConfig: () => void
@@ -19,4 +12,12 @@ export interface ColumnsItem {
   disabledCustom: boolean,
   textBtn: TextBtnItem[],
   format: () => void
+}
+
+export interface Props {
+  localName: string,
+  show?: boolean,
+  baseColumns?: ColumnsItem[],
+  columns?: ColumnsItem[],
+  defaultColumns?: string[]
 }
