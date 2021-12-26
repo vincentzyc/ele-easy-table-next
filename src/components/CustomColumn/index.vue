@@ -68,10 +68,7 @@ import Draggable from 'vuedraggable'
 import * as Types from './type'
 
 const props = withDefaults(defineProps<Types.Props>(), {
-  show: false,
-  baseColumns: (): Types.ColumnsItem[] => [],
-  columns: (): Types.ColumnsItem[] => [],
-  defaultColumns: (): string[] => [],
+  show: false
 })
 
 const emit = defineEmits(['update:show', 'update:columns'])
@@ -81,7 +78,7 @@ const visible = ref(false)
 const checkAll = ref(true)
 const allColumns = ref<Types.ColumnsItem[]>([])
 const showColumns = ref<string[]>([])
-const checkedColumns = ref<any[]>([])
+const checkedColumns = ref<string[]>([])
 const disabledCustoms = ref<string[]>([])
 const isIndeterminate = ref(false)
 
@@ -113,14 +110,14 @@ function searchColumns(word = '') {
   handleCheckedColumnsChange()
 }
 async function initLocalStorage() {
-  let checkedColumns = getLStorage(props.localName) || props.defaultColumns;
+  let checkedColumns: string[] = getLStorage(props.localName) || props.defaultColumns || [];
   if (Array.isArray(checkedColumns) && checkedColumns.length > 0) {
-    let hadCheckedColumns: Record<string, any>[] = [], checkedColumn: Record<string, any> | undefined = {};
+    let hadCheckedColumns: Types.ColumnsItem[] = [], checkedColumn: Types.ColumnsItem | undefined;
     checkedColumns.forEach((v, i) => {
-      checkedColumn = props.baseColumns.find(item => item.key === v);
+      checkedColumn = props.baseColumns?.find(item => item.key === v);
       checkedColumn && checkedColumn.key ? hadCheckedColumns.push(checkedColumn) : checkedColumns.splice(i, 1)
     })
-    props.baseColumns.forEach(item => {
+    props.baseColumns?.forEach(item => {
       if (!checkedColumns.includes(item.key)) allColumns.value.push(item);
     })
     allColumns.value = hadCheckedColumns.concat(allColumns.value);
@@ -130,7 +127,7 @@ async function initLocalStorage() {
     emit('update:columns', hadCheckedColumns);
     return setLStorage(props.localName, checkedColumns);
   }
-  allColumns.value = props.baseColumns;
+  if (props.baseColumns) allColumns.value = props.baseColumns;
   disabledCustoms.value = allColumns.value.filter(item => item.disabledCustom).map(v => v.key)
   showColumns.value = allColumns.value.map(v => v.key);
   return emit('update:columns', props.baseColumns);
@@ -138,14 +135,14 @@ async function initLocalStorage() {
 function initShow() {
   keyWord.value = ''
   searchColumns(keyWord.value)
-  checkedColumns.value = props.columns.map(v => v.key);
+  if (props.columns) checkedColumns.value = props.columns.map(v => v.key);
   handleCheckedColumnsChange()
 }
 function cancel() {
   visible.value = false
 }
 async function confirm() {
-  let hadCheckedColumns: Record<string, any>[] = [], newCheckedColumns: string[] = [];
+  let hadCheckedColumns: Types.ColumnsItem[] = [], newCheckedColumns: string[] = [];
   allColumns.value.forEach(item => {
     if (checkedColumns.value.includes(item.key)) {
       hadCheckedColumns.push(item);

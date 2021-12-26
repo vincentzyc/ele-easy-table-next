@@ -1,8 +1,8 @@
 export interface Props {
   localName: string,
   show?: boolean,
-  baseColumns?: Record<string, any>[],
-  columns?: Record<string, any>[],
+  baseColumns?: ColumnsItem[],
+  columns?: ColumnsItem[],
   defaultColumns?: string[]
 }
 export interface TextBtnItem {
