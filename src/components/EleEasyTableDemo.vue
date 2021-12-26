@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import CustomColumn from './CustomColumn.vue'
+import CustomColumn from './CustomColumn/index.vue'
 // import { ElDropdown, ElButton, ElDropdownMenu, ElDropdownItem, ElTooltip } from 'element-plus'
 
 const allList = [{
