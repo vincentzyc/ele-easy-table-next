@@ -65,9 +65,17 @@ export default defineComponent({
 //   :columns.sync="table.columns" //展示的列
 //  />
 import Draggable from 'vuedraggable'
-import * as Types from './type'
+import { TypeColumnsItem } from './type'
 
-const props = withDefaults(defineProps<Types.Props>(), {
+interface TypeProps {
+  localName: string,
+  show?: boolean,
+  baseColumns?: TypeColumnsItem[],
+  columns?: TypeColumnsItem[],
+  defaultColumns?: string[]
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
   show: false
 })
 
@@ -76,7 +84,7 @@ const emit = defineEmits(['update:show', 'update:columns'])
 const keyWord = ref('')
 const visible = ref(false)
 const checkAll = ref(true)
-const allColumns = ref<Types.ColumnsItem[]>([])
+const allColumns = ref<TypeColumnsItem[]>([])
 const showColumns = ref<string[]>([])
 const checkedColumns = ref<string[]>([])
 const disabledCustoms = ref<string[]>([])
@@ -112,7 +120,7 @@ function searchColumns(word = '') {
 async function initLocalStorage() {
   let checkedColumns: string[] = getLStorage(props.localName) || props.defaultColumns || [];
   if (Array.isArray(checkedColumns) && checkedColumns.length > 0) {
-    let hadCheckedColumns: Types.ColumnsItem[] = [], checkedColumn: Types.ColumnsItem | undefined;
+    let hadCheckedColumns: TypeColumnsItem[] = [], checkedColumn: TypeColumnsItem | undefined;
     checkedColumns.forEach((v, i) => {
       checkedColumn = props.baseColumns?.find(item => item.key === v);
       checkedColumn && checkedColumn.key ? hadCheckedColumns.push(checkedColumn) : checkedColumns.splice(i, 1)
@@ -142,7 +150,7 @@ function cancel() {
   visible.value = false
 }
 async function confirm() {
-  let hadCheckedColumns: Types.ColumnsItem[] = [], newCheckedColumns: string[] = [];
+  let hadCheckedColumns: TypeColumnsItem[] = [], newCheckedColumns: string[] = [];
   allColumns.value.forEach(item => {
     if (checkedColumns.value.includes(item.key)) {
       hadCheckedColumns.push(item);
