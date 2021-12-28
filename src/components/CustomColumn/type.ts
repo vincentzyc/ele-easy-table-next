@@ -1,7 +1,7 @@
 export interface TypeTextBtnItem {
   text: string,
-  funcConfig: () => void
-  handleClick: () => void
+  funcConfig?: (row: any) => any
+  handleClick: (row: any, scope: any) => any
 }
 export interface TypeColumnsItem {
   key: string,
@@ -12,5 +12,5 @@ export interface TypeColumnsItem {
   disabledCustom?: boolean,
   textBtn?: TypeTextBtnItem[],
   config?: Record<string, any>,
-  format?: () => void
+  format?: (row: any) => any
 }
