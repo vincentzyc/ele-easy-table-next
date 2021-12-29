@@ -1,11 +1,10 @@
 <template>
-  <div class="clearfix">
+  <div class="ele-easy-table" style="overflow: hidden;">
     <el-form
       :class="form.class"
       :inline="true"
       :model="formData"
-      :style="form.style"
-      class="relative"
+      :style="{ position: 'relative', ...form.style }"
       size="small"
       v-bind="form.config"
       v-if="Object.keys(form).length > 0"
@@ -60,12 +59,11 @@
         </el-form-item>
         <slot :name="item.slot" v-else></slot>
       </span>
-      <div class="text-center" v-if="showFold">
+      <div style="text-align: center;" v-if="showFold">
         <el-button @click="handleExpand()" type="text">
           {{ isExpand ? '收起' : '展开' }}
           <svg
-            :class="{ 'arrow-expand': isExpand }"
-            class="arrow-icon"
+            :style="svgStyle"
             fill="#409EFF"
             height="12px"
             viewBox="0 0 48 48"
@@ -129,7 +127,7 @@
             <span :key="key" v-for="(btn,key) in column.textBtn">
               <el-button
                 @click="btn.handleClick(scope.row, scope)"
-                class="mg-r10"
+                style="margin-right:10px"
                 type="text"
                 v-bind="btn.config || btn.funcConfig ? btn.funcConfig(scope.row, scope) : {}"
                 v-html="btn.text || btn.funcText(scope.row, scope)"
@@ -145,7 +143,7 @@
     </el-table>
 
     <div
-      class="pagination"
+      style="float: right;margin: 20px 0;"
       v-if="Object.keys(table).length > 0 && pagination && Array.isArray(table.list) && table.list.length > 0"
     >
       <el-pagination
@@ -223,6 +221,12 @@ const showFold = computed(() => {
   return num > props.form.foldNum - 1
 })
 
+const svgStyle = computed(() => {
+  const baseStyle = { 'transition': '0.5s', '-webkit-transition': '0.5s' }
+  const rotateStyle = { 'transform': 'rotate(180deg)', '-webkit-transform': 'rotate(180deg)' }
+  return isExpand.value ? { ...baseStyle, ...rotateStyle } : baseStyle
+})
+
 function handleExpand() {
   isExpand.value = !isExpand.value;
   emit('handle-expand', isExpand.value);
@@ -246,36 +250,4 @@ async function handleCurrentChange(val: number) {
   emit('update:formData', props.formData)
   emit('get-list');
 }
-
 </script>
-
-
-<style scoped>
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: " ";
-}
-.clearfix:after {
-  clear: both;
-}
-.mg-r10 {
-  margin-right: 10px;
-}
-.relative {
-  position: relative;
-}
-.pagination {
-  float: right;
-  margin: 20px 0;
-}
-.text-center {
-  text-align: center;
-}
-.arrow-icon {
-  transition: 0.5s;
-}
-.arrow-expand {
-  transform: rotate(180deg);
-}
-</style>
