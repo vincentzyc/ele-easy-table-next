@@ -15,6 +15,7 @@
     "type": "git",
     "url": "https://github.com/vincentzyc/ele-easy-table-next"
   },
+  "types": "./src/ele-easy-table.d.ts",
   "main": "./dist/ele-easy-table-next.umd.js",
   "module": "./dist/ele-easy-table-next.es.js",
   "exports": {
