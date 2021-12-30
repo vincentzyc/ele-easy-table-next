@@ -73,6 +73,26 @@
 // }>;
 // export default draggableComponent;
 
-
-
-declare const draggableComponent: import("vue").DefineComponent<any>
+declare const draggableComponent: import("vue").DefineComponent<{
+  formData: {
+    type: ObjectConstructor;
+    required: boolean;
+    default: () => ({});
+  };
+  form: {
+    type: ObjectConstructor;
+    required: boolean;
+    default: () => ({});
+  };
+  table: {
+    type: ObjectConstructor;
+    required: boolean;
+    default: () => ({
+      list: []
+    });
+  };
+  pagination: {
+    type: [Boolean, Object],
+    default: true
+  }
+}>
