@@ -5,17 +5,23 @@
 "vue": "3.2.24",
 "vuedraggable": "4.1.0"
 
+## 安装
+```
+npm install ele-easy-table-next -S
+```
+
 ## 使用
 ```
 import { createApp } from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
-import EleEasyTable from 'xxx.js';
+import EleEasyTableNext from "ele-easy-table-next"
+import 'ele-easy-table-next/dist/style.css'
 
 const app = createApp(App);
 
 app.use(ElementPlus)
-app.use(EleEasyTable)
+app.use(EleEasyTableNext)
 
 app.mount('#app')
 ```
