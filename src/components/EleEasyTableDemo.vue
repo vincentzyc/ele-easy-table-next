@@ -40,8 +40,8 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import CustomColumn from './CustomColumn/index.vue'
-import { TypeColumnsItem } from './CustomColumn/type';
+// import CustomColumn from './CustomColumn/index.vue'
+// import { TypeColumnsItem } from './CustomColumn/type';
 // import { ElDropdown, ElButton, ElDropdownMenu, ElDropdownItem, ElTooltip } from 'element-plus'
 
 const allList = [{
@@ -100,7 +100,7 @@ const formData = reactive({
   totalCount: 11,
 })
 const defaultColumns = ref(['data1', 'data3'])
-const baseColumns = ref<TypeColumnsItem[]>([{
+const baseColumns = ref<any[]>([{
   key: 'data1',
   label: '标题1',
   config: {
