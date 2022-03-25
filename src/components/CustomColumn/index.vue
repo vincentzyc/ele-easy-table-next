@@ -5,7 +5,7 @@
         <div class="custom-column-title-wrapper">
           <div class="custom-column-title">自定义列</div>
           <span class="custom-column-search">搜索列：</span>
-          <el-input @input="searchColumns" placeholder="请输入列名称" size="small" style="width:200px" v-model="keyWord"></el-input>
+          <el-input @input="searchColumns" placeholder="请输入列名称" style="width:200px" v-model="keyWord"></el-input>
         </div>
       </template>
       <div v-show="showColumns.length > 0">

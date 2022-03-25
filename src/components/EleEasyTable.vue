@@ -182,8 +182,8 @@ export default defineComponent({
       default: true
     }
   },
-  setup(props) {
-    const emit = defineEmits(['update:formData', 'get-list', 'handle-expand'])
+  // const emit = defineEmits(['update:formData', 'get-list', 'handle-expand'])
+  setup(props, { emit }) {
     const isExpand = ref(false)
     const tableIndex = ref(0)
 
