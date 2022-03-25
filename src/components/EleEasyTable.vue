@@ -5,17 +5,15 @@
       :inline="true"
       :model="formData"
       :style="{ position: 'relative', ...form.style }"
-      size="small"
       v-bind="form.config"
       v-if="Object.keys(form).length > 0"
     >
-      <span :key="key" v-for="(item,key) in form.list" v-show="showFormItem(item, key)">
+      <span :key="key" v-for="(item, key) in form.list" v-show="showFormItem(item, key)">
         <el-form-item :label="item.label ? item.label + '：' : ''" v-bind="item.formConfig" v-if="item.type !== 'slot'">
           <el-date-picker
             :style="item.style || form.formItemStyle"
             @change="getDate(item)"
             end-placeholder="结束日期"
-            size="small"
             start-placeholder="开始日期"
             type="daterange"
             v-bind="item.config"
@@ -27,7 +25,6 @@
             :placeholder="item.placeholder ? item.placeholder : '请输入' + item.label"
             :style="item.style || form.formItemStyle"
             @keyup.enter.native="$emit('get-list')"
-            size="small"
             v-bind="item.config"
             v-if="item.type === 'input'"
             v-model="formData[item.key]"
@@ -35,7 +32,6 @@
           <el-select
             :placeholder="item.placeholder ? item.placeholder : '请选择' + item.label"
             :style="item.style || form.formItemStyle"
-            size="small"
             v-bind="item.config"
             v-if="item.type === 'select'"
             v-model="formData[item.key]"
@@ -51,7 +47,6 @@
             :disabled="item.disabled ? item.disabled() : false"
             :style="item.style"
             @click="item.handleClick(item, key)"
-            size="small"
             type="primary"
             v-bind="item.config"
             v-if="item.type === 'button'"
@@ -124,7 +119,7 @@
             <span v-html="column.format(scope.row, scope)"></span>
           </span>
           <span v-if="column.type === 'textBtn'">
-            <span :key="key" v-for="(btn,key) in column.textBtn">
+            <span :key="key" v-for="(btn, key) in column.textBtn">
               <el-button
                 @click="btn.handleClick(scope.row, scope)"
                 style="margin-right:10px"
@@ -251,3 +246,4 @@ async function handleCurrentChange(val: number) {
   emit('get-list');
 }
 </script>
+
