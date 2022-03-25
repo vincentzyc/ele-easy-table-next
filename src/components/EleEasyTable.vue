@@ -157,93 +157,88 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
-
-export default defineComponent({
-  name: "EleEasyTable"
-})
-</script>
-
-<script lang="ts" setup>
 import { ElForm, ElFormItem, ElDatePicker, ElInput, ElSelect, ElOption, ElTable, ElTableColumn, ElButton, ElPagination } from "element-plus";
 
-const props = defineProps({
-  formData: {
-    type: Object,
-    default() {
-      return {}
+export default defineComponent({
+  name: "EleEasyTable",
+  components: {
+    ElForm, ElFormItem, ElDatePicker, ElInput, ElSelect, ElOption, ElTable, ElTableColumn, ElButton, ElPagination
+  },
+  props: {
+    formData: {
+      type: Object,
+      default: () => ({})
+    },
+    form: {
+      type: Object,
+      default: () => ({})
+    },
+    table: {
+      type: Object,
+      default: () => ({ list: [] })
+    },
+    pagination: {
+      type: [Boolean, Object],
+      default: true
     }
   },
-  form: {
-    type: Object,
-    default() {
-      return {}
-    }
-  },
-  table: {
-    type: Object,
-    default() {
-      return {
-        list: []
+  setup(props) {
+    const emit = defineEmits(['update:formData', 'get-list', 'handle-expand'])
+    const isExpand = ref(false)
+    const tableIndex = ref(0)
+
+    watch(() => props.table.list, () => {
+      if (props.formData.totalCount > 0) {
+        let maxPageIndex = Math.ceil(props.formData.totalCount / props.formData.pageSize);
+        if (props.formData.pageIndex > maxPageIndex) props.formData.pageIndex = maxPageIndex;
       }
+      if (props.formData.pageSize > 0 && props.formData.pageIndex > 0) {
+        tableIndex.value = props.formData.pageSize * (props.formData.pageIndex - 1) + 1;
+      } else {
+        tableIndex.value = 1; //没有翻页功能
+      }
+    }, { immediate: true })
+
+    const showFold = computed(() => {
+      if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0) return false
+      let num = props.form.list.filter((v: Record<string, any>) => !(v.type === 'button' || v.fold === false)).length
+      return num > props.form.foldNum - 1
+    })
+
+    const svgStyle = computed(() => {
+      const baseStyle = { 'transition': '0.5s', '-webkit-transition': '0.5s' }
+      const rotateStyle = { 'transform': 'rotate(180deg)', '-webkit-transform': 'rotate(180deg)' }
+      return isExpand.value ? { ...baseStyle, ...rotateStyle } : baseStyle
+    })
+
+    function handleExpand() {
+      isExpand.value = !isExpand.value;
+      emit('handle-expand', isExpand.value);
     }
-  },
-  pagination: {
-    type: [Boolean, Object],
-    default: true
+    function showFormItem(item: Record<string, any>, key: number) {
+      if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0 || item.type === 'button' || item.fold === false || isExpand.value) return true
+      return key <= props.form.foldNum - 1
+    }
+    function getDate(item: Record<string, any>) {
+      props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : "";
+      props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : "";
+    }
+    function handleSizeChange(val: number) {
+      props.formData.pageIndex = 1
+      props.formData.pageSize = val
+      emit('update:formData', props.formData)
+      emit('get-list');
+    }
+    async function handleCurrentChange(val: number) {
+      props.formData.pageIndex = val
+      emit('update:formData', props.formData)
+      emit('get-list');
+    }
+    return {
+      tableIndex, isExpand,
+      showFold, svgStyle,
+      handleExpand, showFormItem, getDate, handleSizeChange, handleCurrentChange
+    }
   }
 })
-
-const emit = defineEmits(['update:formData', 'get-list', 'handle-expand'])
-
-const isExpand = ref(false)
-const tableIndex = ref(0)
-
-watch(() => props.table.list, () => {
-  if (props.formData.totalCount > 0) {
-    let maxPageIndex = Math.ceil(props.formData.totalCount / props.formData.pageSize);
-    if (props.formData.pageIndex > maxPageIndex) props.formData.pageIndex = maxPageIndex;
-  }
-  if (props.formData.pageSize > 0 && props.formData.pageIndex > 0) {
-    tableIndex.value = props.formData.pageSize * (props.formData.pageIndex - 1) + 1;
-  } else {
-    tableIndex.value = 1; //没有翻页功能
-  }
-}, { immediate: true })
-
-const showFold = computed(() => {
-  if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0) return false
-  let num = props.form.list.filter((v: Record<string, any>) => !(v.type === 'button' || v.fold === false)).length
-  return num > props.form.foldNum - 1
-})
-
-const svgStyle = computed(() => {
-  const baseStyle = { 'transition': '0.5s', '-webkit-transition': '0.5s' }
-  const rotateStyle = { 'transform': 'rotate(180deg)', '-webkit-transform': 'rotate(180deg)' }
-  return isExpand.value ? { ...baseStyle, ...rotateStyle } : baseStyle
-})
-
-function handleExpand() {
-  isExpand.value = !isExpand.value;
-  emit('handle-expand', isExpand.value);
-}
-function showFormItem(item: Record<string, any>, key: number) {
-  if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0 || item.type === 'button' || item.fold === false || isExpand.value) return true
-  return key <= props.form.foldNum - 1
-}
-function getDate(item: Record<string, any>) {
-  props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : "";
-  props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : "";
-}
-function handleSizeChange(val: number) {
-  props.formData.pageIndex = 1
-  props.formData.pageSize = val
-  emit('update:formData', props.formData)
-  emit('get-list');
-}
-async function handleCurrentChange(val: number) {
-  props.formData.pageIndex = val
-  emit('update:formData', props.formData)
-  emit('get-list');
-}
 </script>
-
