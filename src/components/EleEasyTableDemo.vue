@@ -10,9 +10,11 @@
     >
       <template #slot2="{ row }">
         <el-dropdown :hide-on-click="false" @command="handleView">
-          <span class="el-dropdown-link">
+          <span class="el-dropdown-link" style="display: flex;align-items: center;">
             <el-button type="text">操作</el-button>
-            <i class="el-icon-arrow-down el-icon--right"></i>
+            <el-icon class="el-icon--right" color="#409eff">
+              <ArrowDown />
+            </el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
@@ -40,6 +42,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
+import { ArrowDown } from '@element-plus/icons-vue'
 // import CustomColumn from './CustomColumn/index.vue'
 // import { TypeColumnsItem } from './CustomColumn/type';
 // import { ElDropdown, ElButton, ElDropdownMenu, ElDropdownItem, ElTooltip } from 'element-plus'
