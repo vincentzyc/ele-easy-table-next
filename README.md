@@ -1,9 +1,9 @@
 ## 基于 Vue3、Element Plus 开发的一款表格组件，对Element Plus的el-table进行二次封装
 
 ## 需要依赖的库
-"element-plus": "1.2.0-beta.6",
-"vue": "3.2.24",
-"vuedraggable": "4.1.0"
+"element-plus": "^2.1.4",
+"vue": "^3.2.25",
+"vuedraggable": "^4.1.0"
 
 ## 安装
 ```
