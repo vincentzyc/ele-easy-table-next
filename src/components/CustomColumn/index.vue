@@ -33,7 +33,7 @@
             </template>
           </Draggable>
         </el-checkbox-group>
-        <div class="text-center" slot="footer">
+        <div class="text-center">
           <el-button @click="cancel()">取 消</el-button>
           <el-button @click="confirm()" type="primary">确 定</el-button>
         </div>
