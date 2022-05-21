@@ -24,7 +24,7 @@
           <el-input
             :placeholder="item.placeholder ? item.placeholder : '请输入' + item.label"
             :style="item.style || form.formItemStyle"
-            @keyup.enter.native="$emit('get-list')"
+            @keyup.enter="$emit('get-list')"
             v-bind="item.config"
             v-if="item.type === 'input'"
             v-model="formData[item.key]"
