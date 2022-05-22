@@ -99,7 +99,7 @@ watch(visible, (val: boolean) => {
   emit('update:show', val)
 })
 
-function setLStorage(key: string, value: any) {
+function setLStorage(key: string, value: unknown) {
   const str = window.JSON.stringify(value);
   window.localStorage.setItem(key, str);
 }
