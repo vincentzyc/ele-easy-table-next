@@ -201,7 +201,7 @@ export default defineComponent({
 
     const showFold = computed(() => {
       if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0) return false
-      let num = props.form.list.filter((v: Record<string, any>) => !(v.type === 'button' || v.fold === false)).length
+      let num = props.form.list.filter((v: Record<string, unknown>) => !(v.type === 'button' || v.fold === false)).length
       return num > props.form.foldNum - 1
     })
 
@@ -215,11 +215,11 @@ export default defineComponent({
       isExpand.value = !isExpand.value;
       emit('handle-expand', isExpand.value);
     }
-    function showFormItem(item: Record<string, any>, key: number) {
+    function showFormItem(item: Record<string, unknown>, key: number) {
       if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0 || item.type === 'button' || item.fold === false || isExpand.value) return true
       return key <= props.form.foldNum - 1
     }
-    function getDate(item: Record<string, any>) {
+    function getDate(item: Record<string, unknown>) {
       props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : "";
       props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : "";
     }
