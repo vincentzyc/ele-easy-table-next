@@ -1,13 +1,7 @@
 <template>
   <div>
-    <EleEasyTable
-      :form="form"
-      :table="table"
-      v-model:formData="formData"
-      @get-list="handleSearch"
-      @selection-change="handleSelectionChange"
-      class="ele-easy-table-demo"
-    >
+    <EleEasyTable :form="form" :table="table" v-model:formData="formData" @get-list="handleSearch"
+      @selection-change="handleSelectionChange" class="ele-easy-table-demo">
       <template #slot2="{ row }">
         <el-dropdown :hide-on-click="false" @command="handleView">
           <span class="el-dropdown-link" style="display: flex;align-items: center;">
@@ -30,13 +24,8 @@
         </el-tooltip>
       </template>
     </EleEasyTable>
-    <CustomColumn
-      localName="ELEEASYTABLE_CUSTOM_COLUMNS"
-      v-model:columns="table.columns"
-      v-model:show="showCustomColumn"
-      :baseColumns="baseColumns"
-      :defaultColumns="defaultColumns"
-    />
+    <CustomColumn localName="ELEEASYTABLE_CUSTOM_COLUMNS" v-model:columns="table.columns"
+      v-model:show="showCustomColumn" :baseColumns="baseColumns" :defaultColumns="defaultColumns" />
   </div>
 </template>
 
@@ -103,7 +92,7 @@ const formData = reactive({
   totalCount: 11,
 })
 const defaultColumns = ref(['data1', 'data3'])
-const baseColumns = ref<any[]>([{
+const baseColumns = ref<Record<string, unknown>[]>([{
   key: 'data1',
   label: '标题1',
   config: {
@@ -114,8 +103,8 @@ const baseColumns = ref<any[]>([{
   label: '标题2',
   header: "header1",
   type: 'format',
-  format: (row: any) => {
-    return row.data2 + '%';
+  format: (row: Record<string, unknown>) => {
+    return row.data2 as string + '%';
   }
 }, {
   key: 'data3',
@@ -124,16 +113,16 @@ const baseColumns = ref<any[]>([{
   disabledCustom: true,
   textBtn: [{
     text: "操作一",
-    funcConfig: (row: any) => {
-      if (row.data1 === '333') return { disabled: true }
+    funcConfig: (row: Record<string, unknown>) => {
+      if (row.data1 as string === '333') return { disabled: true }
     },
-    handleClick: (row: any, scope: any) => { console.log(row, scope) }
+    handleClick: (row: Record<string, unknown>, scope: Record<string, unknown>) => { console.log(row, scope) }
   }, {
     text: "操作二",
-    handleClick: (row: any, scope: any) => { console.log(row, scope) }
+    handleClick: (row: Record<string, unknown>, scope: Record<string, unknown>) => { console.log(row, scope) }
   }, {
     text: "操作三",
-    handleClick: (row: any, scope: any) => { console.log(row, scope) }
+    handleClick: (row: Record<string, unknown>, scope: Record<string, unknown>) => { console.log(row, scope) }
   }]
 }, {
   key: 'data4',
@@ -210,7 +199,7 @@ const form = reactive({
   }, {
     type: 'button',
     text: '查询',
-    handleClick: (row: any, key: number) => {
+    handleClick: (row: Record<string, unknown>, key: number) => {
       console.log(row, key);
       handleSearch();
     },
@@ -232,14 +221,14 @@ const table = reactive({
   selection: {
     show: true,
     config: {
-      selectable: (row: any) => row.data1 !== '222'
+      selectable: (row: Record<string, unknown>) => row.data1 !== '222'
     }
   },
-  list: [],
+  list: [] as typeof allList,
   columns: []
 })
 
-function getList(): any {
+function getList() {
   return allList.filter((item, key) =>
     key < formData.pageSize * formData.pageIndex && key >= formData.pageSize * (formData.pageIndex - 1)
   );
@@ -247,14 +236,11 @@ function getList(): any {
 async function handleSearch() {
   table.list = getList()
 }
-function handleSelectionChange(multipleSelection: any) {
+function handleSelectionChange(multipleSelection: Record<string, unknown>) {
   console.log(multipleSelection);
 }
-function test1() {
-  console.log('test1test1test1test1')
-  showCustomColumn.value = true
-}
-function handleView(command: any) {
+
+function handleView(command: Record<string, unknown>) {
   console.log(command);
 }
 
