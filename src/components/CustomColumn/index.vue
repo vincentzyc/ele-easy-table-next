@@ -9,26 +9,15 @@
         </div>
       </template>
       <div v-show="showColumns.length > 0">
-        <el-checkbox :indeterminate="isIndeterminate" @change="handleCheckAllChange" v-model="checkAll">全选</el-checkbox>
+        <el-checkbox :indeterminate="isIndeterminate" @change="val => handleCheckAllChange(val as boolean)"
+          v-model="checkAll">全选</el-checkbox>
         <el-checkbox-group @change="handleCheckedColumnsChange" v-model="checkedColumns">
-          <Draggable
-            :animation="166"
-            :group="{ name: 'customColumn' }"
-            class="el-checkbox-wrapper"
-            ghostClass="ghost"
-            handle=".el-checkbox__label"
-            item-key="key"
-            tag="ul"
-            v-model="allColumns"
-          >
+          <Draggable :animation="166" :group="{ name: 'customColumn' }" class="el-checkbox-wrapper" ghostClass="ghost"
+            handle=".el-checkbox__label" item-key="key" tag="ul" v-model="allColumns">
             <template #item="{ element }">
               <li>
-                <el-checkbox
-                  :disabled="element.disabledCustom"
-                  :key="element.key"
-                  :label="element.key"
-                  v-show="showColumns.includes(element.key)"
-                >{{ element.label }}</el-checkbox>
+                <el-checkbox :disabled="element.disabledCustom" :key="element.key" :label="element.key"
+                  v-show="showColumns.includes(element.key)">{{ element.label }}</el-checkbox>
               </li>
             </template>
           </Draggable>
@@ -184,14 +173,17 @@ initLocalStorage()
   display: flex;
   align-content: center;
 }
+
 .custom-column-wrapper .custom-column-title {
   flex: auto;
   font-size: 18px;
 }
+
 .custom-column-wrapper .custom-column-search {
   font-size: 14px;
   color: #666;
 }
+
 .custom-column-wrapper .el-dialog__header {
   line-height: 30px;
   color: #303133;
@@ -224,6 +216,7 @@ initLocalStorage()
 .custom-column-wrapper .el-checkbox__label:hover {
   cursor: move;
 }
+
 .custom-column-wrapper .text-center {
   text-align: center;
 }
