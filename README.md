@@ -1,7 +1,5 @@
 ## 基于 Vue3、Element Plus 开发的一款表格组件，对Element Plus的el-table进行二次封装
 
-当前vuecli版本正在开发中，请先使用vite版本
-
 [vite 版本](https://github.com/vincentzyc/ele-easy-table-next/tree/vite)
 
 ## 需要依赖的库
