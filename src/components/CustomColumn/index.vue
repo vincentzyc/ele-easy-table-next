@@ -1,7 +1,7 @@
 <template>
   <div class="custom-column-wrapper">
     <el-dialog v-model="visible" :show-close="false" width="880px">
-      <template #title>
+      <template #header>
         <div class="custom-column-title-wrapper">
           <div class="custom-column-title">自定义列</div>
           <span class="custom-column-search">搜索列：</span>
