@@ -55,7 +55,7 @@
         <slot :name="item.slot" v-else></slot>
       </span>
       <div style="text-align: center;" v-if="showFold">
-        <el-button @click="handleExpand()" type="text">
+        <el-button @click="handleExpand()" type="primary" link>
           {{ isExpand ? '收起' : '展开' }}
           <svg
             :style="svgStyle"
@@ -123,7 +123,8 @@
               <el-button
                 @click="btn.handleClick(scope.row, scope)"
                 style="margin-right:10px"
-                type="text"
+                type="primary"
+                link
                 v-bind="btn.config || btn.funcConfig ? btn.funcConfig(scope.row, scope) : {}"
                 v-html="btn.text || btn.funcText(scope.row, scope)"
                 v-if="btn.text || btn.funcText(scope.row, scope)"

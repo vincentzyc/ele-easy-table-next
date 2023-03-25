@@ -1,26 +1,19 @@
-import path from 'path'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-// import AutoImport from 'unplugin-auto-import/vite'
-// import Components from 'unplugin-vue-components/vite'
-// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import path from 'path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    // AutoImport({
-    //   resolvers: [ElementPlusResolver()],
-    // }),
-    // Components({
-    //   resolvers: [ElementPlusResolver()],
-    // }),
-  ],
+  base: './',
+  server: {
+    host: true,
+  },
+  plugins: [vue()],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'ele-easy-table-next',
-      fileName: (format) => `ele-easy-table-next.${format}.js`
+      fileName: format => `ele-easy-table-next.${format}.js`
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -30,9 +23,9 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           vuedraggable: 'vuedraggable',
-          'element-plus': 'ElementPlus '
-        }
-      }
-    }
-  }
-})
+          'element-plus': 'ElementPlus ',
+        },
+      },
+    },
+  },
+});

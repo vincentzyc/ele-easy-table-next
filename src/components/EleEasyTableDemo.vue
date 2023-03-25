@@ -11,7 +11,7 @@
       <template #slot2="{ row }">
         <el-dropdown :hide-on-click="false" @command="handleView">
           <span class="el-dropdown-link" style="display: flex;align-items: center;">
-            <el-button type="text">操作</el-button>
+            <el-button type="primary" link>操作</el-button>
             <el-icon class="el-icon--right" color="#409eff">
               <ArrowDown />
             </el-icon>
