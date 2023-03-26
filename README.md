@@ -3,9 +3,10 @@
 [vite 版本](https://github.com/vincentzyc/ele-easy-table-next/tree/vite)
 
 ## 需要依赖的库
-"element-plus": "^2.1.4",
-"vue": "^3.2.25",
-"vuedraggable": "^4.1.0"
+  "@element-plus/icons-vue": "^2.1.0",
+  "element-plus": "^2.3.1",
+  "vue": "^3.2.47",
+  "vuedraggable": "^4.1.0"
 
 ## 安装
 ```
