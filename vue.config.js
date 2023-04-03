@@ -7,11 +7,8 @@ module.exports = defineConfig({
   outputDir: "docs",
   productionSourceMap: false,
   configureWebpack: {
-    // 以下库使用外部资源，不会被打包
     externals: process.env.NODE_ENV === 'production' ? {
-      "vue": "Vue",
       "vuedraggable": "vuedraggable",
-      "element-plus": "ElementPlus"
     } : {}
   },
 })
