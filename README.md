@@ -18,12 +18,12 @@ npm install ele-easy-table-next -S
 import { createApp } from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
-import EleEasyTableNext from "ele-easy-table-next"
+import EleEasyTable from "ele-easy-table-next"
 
 const app = createApp(App);
 
 app.use(ElementPlus)
-app.use(EleEasyTableNext)
+app.use(EleEasyTable)
 
 app.mount('#app')
 ```
