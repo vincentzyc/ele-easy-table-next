@@ -161,33 +161,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from "vue";
-import {
-  ElForm,
-  ElFormItem,
-  ElDatePicker,
-  ElInput,
-  ElSelect,
-  ElOption,
-  ElTable,
-  ElTableColumn,
-  ElButton,
-  ElPagination,
-} from "element-plus";
 
 export default defineComponent({
   name: "EleEasyTable",
-  components: {
-    ElForm,
-    ElFormItem,
-    ElDatePicker,
-    ElInput,
-    ElSelect,
-    ElOption,
-    ElTable,
-    ElTableColumn,
-    ElButton,
-    ElPagination,
-  },
   props: {
     formData: {
       type: Object,
