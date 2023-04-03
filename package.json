@@ -1,6 +1,6 @@
 {
   "name": "ele-easy-table-next",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "author": "vincentzyc",
   "description": "基于 Vue3、Element Plus 开发的一款表格组件，对Element Plus的el-table进行二次封装",
@@ -16,12 +16,12 @@
     "url": "https://github.com/vincentzyc/ele-easy-table-next"
   },
   "types": "./src/ele-easy-table.d.ts",
-  "main": "./dist/ele-easy-table-next.umd.js",
-  "module": "./dist/ele-easy-table-next.es.js",
+  "main": "./dist/ele-easy-table-next.umd.min.js",
+  "module": "./dist/ele-easy-table-next.common.js",
   "exports": {
     ".": {
-      "import": "./dist/ele-easy-table-next.es.js",
-      "require": "./dist/ele-easy-table-next.umd.js"
+      "import": "./dist/ele-easy-table-next.common.js",
+      "require": "./dist/ele-easy-table-next.umd.min.js"
     }
   },
   "files": [
