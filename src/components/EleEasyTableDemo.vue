@@ -117,7 +117,7 @@ const formData = reactive({
   filterStartAndEndTime: ["2019-01-01", "2019-01-07"], //设置默认值
   pageIndex: 1,
   pageSize: 10,
-  totalCount: 11,
+  totalCount: allList.length,
 });
 const defaultColumns = ref(["data1", "data3"]);
 const baseColumns = ref<Record<string, unknown>[]>([
