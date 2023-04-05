@@ -77,7 +77,6 @@
     <el-table
       :data="table.list"
       border
-      element-loading-text="拼命加载中"
       stripe
       style="overflow: visible; margin-top: 20px"
       tooltip-effect="light"
@@ -150,7 +149,7 @@
         "
         :page-size="formData.pageSize || 10"
         :page-sizes="typeof pagination === 'object' ? pagination.pageSizes : [10, 20, 50, 100]"
-        :total="11"
+        :total="formData.totalCount||0"
         @current-change="handleCurrentChange"
         @size-change="handleSizeChange"
         v-bind="typeof pagination === 'object' ? pagination : {}"
