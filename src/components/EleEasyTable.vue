@@ -9,11 +9,7 @@
       v-if="Object.keys(form).length > 0"
     >
       <span :key="key" v-for="(item, key) in form.list" v-show="showFormItem(item, key)">
-        <el-form-item
-          :label="item.label ? item.label + '：' : ''"
-          v-bind="item.formConfig"
-          v-if="item.type !== 'slot'"
-        >
+        <el-form-item :label="item.label ? item.label + '：' : ''" v-bind="item.formConfig" v-if="item.type !== 'slot'">
           <el-date-picker
             :style="item.style || form.formItemStyle"
             @change="getDate(item)"
@@ -55,14 +51,14 @@
             type="primary"
             v-bind="item.config"
             v-if="item.type === 'button'"
-            >{{ typeof item.text === "function" ? item.text() : item.text }}</el-button
+            >{{ typeof item.text === 'function' ? item.text() : item.text }}</el-button
           >
         </el-form-item>
         <slot :name="item.slot" v-else></slot>
       </span>
       <div style="text-align: center" v-if="showFold">
         <el-button @click="handleExpand()" type="primary" link>
-          {{ isExpand ? "收起" : "展开" }}
+          {{ isExpand ? '收起' : '展开' }}
           <svg :style="svgStyle" fill="#409EFF" height="12px" viewBox="0 0 48 48" width="12px">
             <g fill-rule="evenodd">
               <path
@@ -107,12 +103,12 @@
         v-bind="column.config"
         v-for="column in table.columns"
       >
-        <template #header="scope">
+        <template #header="scope: { row: any }">
           <slot :name="column.header" :row="scope.row" v-if="column.header"></slot>
           <span v-else>{{ column.label }}</span>
         </template>
 
-        <template #default="scope">
+        <template #default="scope: { row: any }">
           <span v-if="!column.hasOwnProperty('type')">{{ scope.row[column.key] }}</span>
           <span v-if="column.type === 'format'">
             <span v-html="column.format(scope.row, scope)"></span>
@@ -144,12 +140,10 @@
     >
       <el-pagination
         :current-page="formData.pageIndex || 1"
-        :layout="
-          typeof pagination === 'object' ? pagination.layout : 'total, sizes, prev, pager, next, jumper'
-        "
+        :layout="typeof pagination === 'object' ? pagination.layout : 'total, sizes, prev, pager, next, jumper'"
         :page-size="formData.pageSize || 10"
         :page-sizes="typeof pagination === 'object' ? pagination.pageSizes : [10, 20, 50, 100]"
-        :total="formData.totalCount||0"
+        :total="formData.totalCount || 0"
         @current-change="handleCurrentChange"
         @size-change="handleSizeChange"
         v-bind="typeof pagination === 'object' ? pagination : {}"
@@ -159,10 +153,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from "vue";
+import { computed, defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
-  name: "EleEasyTable",
+  name: 'EleEasyTable',
   props: {
     formData: {
       type: Object,
@@ -203,31 +197,31 @@ export default defineComponent({
     );
 
     const showFold = computed(() => {
-      if (typeof props.form.foldNum !== "number" || props.form.foldNum <= 0) return false;
+      if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0) return false;
       let num = props.form.list.filter(
-        (v: Record<string, unknown>) => !(v.type === "button" || v.fold === false)
+        (v: Record<string, unknown>) => !(v.type === 'button' || v.fold === false)
       ).length;
       return num > props.form.foldNum - 1;
     });
 
     const svgStyle = computed(() => {
-      const baseStyle = { transition: "0.5s", "-webkit-transition": "0.5s" };
+      const baseStyle = { transition: '0.5s', '-webkit-transition': '0.5s' };
       const rotateStyle = {
-        transform: "rotate(180deg)",
-        "-webkit-transform": "rotate(180deg)",
+        transform: 'rotate(180deg)',
+        '-webkit-transform': 'rotate(180deg)',
       };
       return isExpand.value ? { ...baseStyle, ...rotateStyle } : baseStyle;
     });
 
     function handleExpand() {
       isExpand.value = !isExpand.value;
-      emit("handle-expand", isExpand.value);
+      emit('handle-expand', isExpand.value);
     }
     function showFormItem(item: Record<string, unknown>, key: number) {
       if (
-        typeof props.form.foldNum !== "number" ||
+        typeof props.form.foldNum !== 'number' ||
         props.form.foldNum <= 0 ||
-        item.type === "button" ||
+        item.type === 'button' ||
         item.fold === false ||
         isExpand.value
       )
@@ -235,19 +229,19 @@ export default defineComponent({
       return key <= props.form.foldNum - 1;
     }
     function getDate(item: Record<string, string>) {
-      props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : "";
-      props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : "";
+      props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : '';
+      props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : '';
     }
     function handleSizeChange(val: number) {
       props.formData.pageIndex = 1;
       props.formData.pageSize = val;
-      emit("update:formData", props.formData);
-      emit("get-list");
+      emit('update:formData', props.formData);
+      emit('get-list');
     }
     async function handleCurrentChange(val: number) {
       props.formData.pageIndex = val;
-      emit("update:formData", props.formData);
-      emit("get-list");
+      emit('update:formData', props.formData);
+      emit('get-list');
     }
     return {
       tableIndex,
