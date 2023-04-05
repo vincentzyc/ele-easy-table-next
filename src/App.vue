@@ -1,11 +1,7 @@
 <template>
-  <el-config-provider :locale="zhCn">
-    <EleEasyTableDemo />
-  </el-config-provider>
+  <EleEasyTableDemo />
 </template>
 
 <script setup lang="ts">
-import EleEasyTableDemo from './components/EleEasyTableDemo.vue'
-import { ElConfigProvider } from 'element-plus'
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import EleEasyTableDemo from './components/EleEasyTableDemo.vue';
 </script>
