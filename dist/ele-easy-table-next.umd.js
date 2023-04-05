@@ -2078,7 +2078,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=f2aacc84&ts=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=410d9820&ts=true
 
 const _hoisted_1 = {
   class: "ele-easy-table",
@@ -2193,7 +2193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: $event => item.handleClick(item, key),
           type: "primary"
         }, item.config), {
-          default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(typeof item.text === "function" ? item.text() : item.text), 1)]),
+          default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(typeof item.text === 'function' ? item.text() : item.text), 1)]),
           _: 2
         }, 1040, ["disabled", "style", "onClick"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]),
         _: 2
@@ -2205,7 +2205,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "primary",
       link: ""
     }, {
-      default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(_ctx.isExpand ? "收起" : "展开") + " ", 1), ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("svg", {
+      default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(_ctx.isExpand ? '收起' : '展开') + " ", 1), ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("svg", {
         style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)(_ctx.svgStyle),
         fill: "#409EFF",
         height: "12px",
@@ -2219,7 +2219,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1,
     data: _ctx.table.list,
     border: "",
-    "element-loading-text": "拼命加载中",
     stripe: "",
     style: {
       "overflow": "visible",
@@ -2278,17 +2277,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     layout: typeof _ctx.pagination === 'object' ? _ctx.pagination.layout : 'total, sizes, prev, pager, next, jumper',
     "page-size": _ctx.formData.pageSize || 10,
     "page-sizes": typeof _ctx.pagination === 'object' ? _ctx.pagination.pageSizes : [10, 20, 50, 100],
-    total: 11,
+    total: _ctx.formData.totalCount || 0,
     onCurrentChange: _ctx.handleCurrentChange,
     onSizeChange: _ctx.handleSizeChange
-  }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "onCurrentChange", "onSizeChange"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
+  }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "total", "onCurrentChange", "onSizeChange"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
 }
-;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=f2aacc84&ts=true
+;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=410d9820&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=script&lang=ts
 
 /* harmony default export */ var EleEasyTablevue_type_script_lang_ts = ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
-  name: "EleEasyTable",
+  name: 'EleEasyTable',
   props: {
     formData: {
       type: Object,
@@ -2329,18 +2328,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       immediate: true
     });
     const showFold = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
-      if (typeof props.form.foldNum !== "number" || props.form.foldNum <= 0) return false;
-      let num = props.form.list.filter(v => !(v.type === "button" || v.fold === false)).length;
+      if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0) return false;
+      let num = props.form.list.filter(v => !(v.type === 'button' || v.fold === false)).length;
       return num > props.form.foldNum - 1;
     });
     const svgStyle = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
       const baseStyle = {
-        transition: "0.5s",
-        "-webkit-transition": "0.5s"
+        transition: '0.5s',
+        '-webkit-transition': '0.5s'
       };
       const rotateStyle = {
-        transform: "rotate(180deg)",
-        "-webkit-transform": "rotate(180deg)"
+        transform: 'rotate(180deg)',
+        '-webkit-transform': 'rotate(180deg)'
       };
       return isExpand.value ? {
         ...baseStyle,
@@ -2349,26 +2348,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     });
     function handleExpand() {
       isExpand.value = !isExpand.value;
-      emit("handle-expand", isExpand.value);
+      emit('handle-expand', isExpand.value);
     }
     function showFormItem(item, key) {
-      if (typeof props.form.foldNum !== "number" || props.form.foldNum <= 0 || item.type === "button" || item.fold === false || isExpand.value) return true;
+      if (typeof props.form.foldNum !== 'number' || props.form.foldNum <= 0 || item.type === 'button' || item.fold === false || isExpand.value) return true;
       return key <= props.form.foldNum - 1;
     }
     function getDate(item) {
-      props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : "";
-      props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : "";
+      props.formData[item.startKey] = props.formData[item.key] ? props.formData[item.key][0] : '';
+      props.formData[item.endKey] = props.formData[item.key] ? props.formData[item.key][1] : '';
     }
     function handleSizeChange(val) {
       props.formData.pageIndex = 1;
       props.formData.pageSize = val;
-      emit("update:formData", props.formData);
-      emit("get-list");
+      emit('update:formData', props.formData);
+      emit('get-list');
     }
     async function handleCurrentChange(val) {
       props.formData.pageIndex = val;
-      emit("update:formData", props.formData);
-      emit("get-list");
+      emit('update:formData', props.formData);
+      emit('get-list');
     }
     return {
       tableIndex,
