@@ -18,6 +18,9 @@ dependencies:
     version: 4.1.0(vue@3.2.47)
 
 devDependencies:
+  '@types/webpack-env':
+    specifier: ^1.18.0
+    version: 1.18.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.4.0
     version: 5.4.0(@typescript-eslint/parser@5.4.0)(eslint@7.32.0)(typescript@4.5.5)
