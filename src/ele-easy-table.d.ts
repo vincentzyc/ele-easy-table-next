@@ -2,12 +2,12 @@ export declare const EleEasyTable: import("vue").DefineComponent<{
   formData: {
     type: ObjectConstructor;
     required: boolean;
-    default: () => ({});
+    default: () => Record<string, any>;
   };
   form: {
     type: ObjectConstructor;
     required: boolean;
-    default: () => ({});
+    default: () => Record<string, any>;
   };
   table: {
     type: ObjectConstructor;
@@ -17,7 +17,7 @@ export declare const EleEasyTable: import("vue").DefineComponent<{
     });
   };
   pagination: {
-    type: [Boolean, Object],
+    type: [boolean, Record<string, any>],
     default: true
   }
 }>
