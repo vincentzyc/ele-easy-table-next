@@ -144,8 +144,8 @@
         :page-size="formData.pageSize || 10"
         :page-sizes="typeof pagination === 'object' ? pagination.pageSizes : [10, 20, 50, 100]"
         :total="formData.totalCount || 0"
-        @current-change="handleCurrentChange"
-        @size-change="handleSizeChange"
+        @update:current-page="handleCurrentChange"
+        @update:page-size="handleSizeChange"
         v-bind="typeof pagination === 'object' ? pagination : {}"
       ></el-pagination>
     </div>
