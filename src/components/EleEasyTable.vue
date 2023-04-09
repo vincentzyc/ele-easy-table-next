@@ -19,7 +19,7 @@
             v-bind="item.config"
             v-if="item.type === 'datePicker'"
             v-model="formData[item.key]"
-            value-format="yyyy-MM-dd"
+            value-format="YYYY-MM-dd"
           ></el-date-picker>
           <el-input
             :placeholder="item.placeholder ? item.placeholder : '请输入' + item.label"
