@@ -1,6 +1,6 @@
 import EleEasyTable from './components/EleEasyTable.vue';
 import CustomColumn from './components/CustomColumn/index.vue';
-import EleEasyTableEdit from './components/CustomColumn/index.vue';
+import EleEasyTableEdit from './components/EleEasyTableEdit.vue';
 import { App } from 'vue';
 
 export default {
