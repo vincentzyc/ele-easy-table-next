@@ -41,7 +41,6 @@ interface TypeProps {
 
 withDefaults(defineProps<TypeProps>(), {
   isEdit: false,
-  options: () => [],
   config: () => ({}),
 });
 </script>
