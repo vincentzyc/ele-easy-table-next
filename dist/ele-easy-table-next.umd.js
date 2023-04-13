@@ -2078,7 +2078,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=410d9820&ts=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=5573736e&ts=true
 
 const _hoisted_1 = {
   class: "ele-easy-table",
@@ -2161,7 +2161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, item.config, {
           modelValue: _ctx.formData[item.key],
           "onUpdate:modelValue": $event => _ctx.formData[item.key] = $event,
-          "value-format": "yyyy-MM-dd"
+          "value-format": "YYYY-MM-dd"
         }), null, 16, ["style", "onChange", "modelValue", "onUpdate:modelValue"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), item.type === 'input' ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_el_input, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
           key: 1,
           placeholder: item.placeholder ? item.placeholder : '请输入' + item.label,
@@ -2278,11 +2278,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "page-size": _ctx.formData.pageSize || 10,
     "page-sizes": typeof _ctx.pagination === 'object' ? _ctx.pagination.pageSizes : [10, 20, 50, 100],
     total: _ctx.formData.totalCount || 0,
-    onCurrentChange: _ctx.handleCurrentChange,
-    onSizeChange: _ctx.handleSizeChange
-  }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "total", "onCurrentChange", "onSizeChange"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
+    "onUpdate:currentPage": _ctx.handleCurrentChange,
+    "onUpdate:pageSize": _ctx.handleSizeChange
+  }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "total", "onUpdate:currentPage", "onUpdate:pageSize"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
 }
-;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=410d9820&ts=true
+;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=5573736e&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=script&lang=ts
 
@@ -2638,13 +2638,84 @@ var CustomColumnvue_type_style_index_0_id_f53214d6_lang_css = __webpack_require_
 const CustomColumn_exports_ = CustomColumnvue_type_script_lang_ts_setup_true;
 
 /* harmony default export */ var CustomColumn = (CustomColumn_exports_);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTableEdit.vue?vue&type=script&lang=ts&setup=true
+
+
+
+const EleEasyTableEditvue_type_script_lang_ts_setup_true_default_ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
+  name: 'EleEasyTableEdit'
+});
+/* harmony default export */ var EleEasyTableEditvue_type_script_lang_ts_setup_true = (/*#__PURE__*/(0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
+  ...EleEasyTableEditvue_type_script_lang_ts_setup_true_default_,
+  props: {
+    column: null,
+    prop: null,
+    isEdit: {
+      type: Boolean,
+      default: false
+    },
+    options: null,
+    config: {
+      default: () => ({})
+    }
+  },
+  setup(__props) {
+    return (_ctx, _cache) => {
+      const _component_el_option = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("el-option");
+      const _component_el_select = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("el-select");
+      const _component_el_input = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("el-input");
+      return !__props.isEdit ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
+        key: 0
+      }, __props.config, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toHandlers)(_ctx.$attrs, true)), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(__props.column[__props.prop]), 17)) : __props.options ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_el_select, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
+        key: 1,
+        filterable: "",
+        placeholder: "请选择",
+        size: "small"
+      }, __props.config, {
+        modelValue: __props.column[__props.prop],
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => __props.column[__props.prop] = $event)
+      }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toHandlers)(_ctx.$attrs)), {
+        default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)(__props.options, item => {
+          return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_el_option, {
+            key: item.code,
+            label: item.label,
+            value: item.label
+          }, null, 8, ["label", "value"]);
+        }), 128))]),
+        _: 1
+      }, 16, ["modelValue"])) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_el_input, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
+        key: 2,
+        class: __props.prop + __props.column.id,
+        placeholder: "请输入内容",
+        size: "small"
+      }, __props.config, {
+        modelValue: __props.column[__props.prop],
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => __props.column[__props.prop] = $event),
+        modelModifiers: {
+          trim: true
+        }
+      }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toHandlers)(_ctx.$attrs)), null, 16, ["class", "modelValue"]));
+    };
+  }
+}));
+;// CONCATENATED MODULE: ./src/components/EleEasyTableEdit.vue?vue&type=script&lang=ts&setup=true
+ 
+;// CONCATENATED MODULE: ./src/components/EleEasyTableEdit.vue
+
+
+
+const EleEasyTableEdit_exports_ = EleEasyTableEditvue_type_script_lang_ts_setup_true;
+
+/* harmony default export */ var EleEasyTableEdit = (EleEasyTableEdit_exports_);
 ;// CONCATENATED MODULE: ./src/index.ts
+
 
 
 /* harmony default export */ var src_0 = ({
   install: app => {
     app.component('EleEasyTable', EleEasyTable);
     app.component('CustomColumn', CustomColumn);
+    app.component('EleEasyTableEdit', EleEasyTableEdit);
   }
 });
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@vue+cli-service@5.0.1_@babel+core@7.21.4_lodash@4.17.21_vue@3.2.47/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
