@@ -24,6 +24,8 @@ export declare const EleEasyTable: import("vue").DefineComponent<{
 
 export interface TypeTextBtnItem {
   text: string,
+  config?: Record<string, any>
+  funcText?: (row: any) => any
   funcConfig?: (row: any) => any
   handleClick: (row: any, scope: any) => any
 }
