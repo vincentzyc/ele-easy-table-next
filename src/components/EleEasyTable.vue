@@ -117,10 +117,10 @@
             <span :key="key" v-for="(btn, key) in column.textBtn">
               <el-button
                 @click="btn.handleClick(scope.row, scope)"
-                style="margin-right: 10px"
+                :style="column.textBtn.length > 1 ? 'margin-right: 10px' : ''"
                 type="primary"
                 link
-                v-bind="btn.config || btn.funcConfig ? btn.funcConfig(scope.row, scope) : {}"
+                v-bind="btn.config || (btn.funcConfig ? btn.funcConfig(scope.row, scope) : {})"
                 v-html="btn.text || btn.funcText(scope.row, scope)"
                 v-if="btn.text || btn.funcText(scope.row, scope)"
               >
