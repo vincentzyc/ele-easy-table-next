@@ -23,7 +23,7 @@ export declare const EleEasyTable: import("vue").DefineComponent<{
 }>
 
 export interface TypeTextBtnItem {
-  text: string,
+  text?: string,
   config?: Record<string, any>
   funcText?: (row: any) => any
   funcConfig?: (row: any) => any
