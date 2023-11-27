@@ -2078,7 +2078,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=6abcdac2&ts=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=14aa695b&ts=true
 
 const _hoisted_1 = {
   class: "ele-easy-table",
@@ -2142,7 +2142,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     style: {
       position: 'relative',
       ..._ctx.form.style
-    }
+    },
+    ref: "refForm"
   }, _ctx.form.config), {
     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)(_ctx.form.list, (item, key) => {
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withDirectives)(((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
@@ -2224,7 +2225,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "overflow": "visible",
       "margin-top": "20px"
     },
-    "tooltip-effect": "light"
+    "tooltip-effect": "light",
+    ref: "refTable"
   }, _ctx.$attrs), {
     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [_ctx.table.selection && _ctx.table.selection.show && _ctx.table.list.length > 0 ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_el_table_column, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
       key: 0,
@@ -2280,7 +2282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:pageSize": _ctx.handleSizeChange
   }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "total", "onUpdate:currentPage", "onUpdate:pageSize"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
 }
-;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=6abcdac2&ts=true
+;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=14aa695b&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=script&lang=ts
 
@@ -2312,6 +2314,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }) {
     const isExpand = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)(false);
     const tableIndex = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)(0);
+    const refTable = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
+    const refForm = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => props.table.list, () => {
       if (props.formData.totalCount > 0) {
         let maxPageIndex = Math.ceil(props.formData.totalCount / props.formData.pageSize);
@@ -2368,6 +2372,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       emit('get-list');
     }
     return {
+      refTable,
+      refForm,
       tableIndex,
       isExpand,
       showFold,
