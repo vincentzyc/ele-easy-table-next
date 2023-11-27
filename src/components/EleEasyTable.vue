@@ -5,8 +5,9 @@
       :inline="true"
       :model="formData"
       :style="{ position: 'relative', ...form.style }"
-      v-bind="form.config"
       v-if="Object.keys(form).length > 0"
+      ref="refForm"
+      v-bind="form.config"
     >
       <span :key="key" v-for="(item, key) in form.list" v-show="showFormItem(item, key)">
         <el-form-item :label="item.label ? item.label + '：' : ''" v-bind="item.formConfig" v-if="item.type !== 'slot'">
@@ -76,9 +77,10 @@
       stripe
       style="overflow: visible; margin-top: 20px"
       tooltip-effect="light"
-      v-bind="$attrs"
       v-if="Object.keys(table).length > 0"
       v-loading="table.isLoading"
+      ref="refTable"
+      v-bind="$attrs"
     >
       <el-table-column
         align="center"
@@ -153,6 +155,7 @@
 </template>
 
 <script lang="ts">
+import { ElTable,FormInstance } from 'element-plus';
 import { computed, defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
@@ -179,6 +182,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const isExpand = ref(false);
     const tableIndex = ref(0);
+    const refTable = ref<InstanceType<typeof ElTable>>();
+    const refForm = ref<FormInstance>();
 
     watch(
       () => props.table.list,
@@ -244,6 +249,8 @@ export default defineComponent({
       emit('get-list');
     }
     return {
+      refTable,
+      refForm,
       tableIndex,
       isExpand,
       showFold,
