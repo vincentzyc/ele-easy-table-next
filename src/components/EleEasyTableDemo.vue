@@ -9,6 +9,7 @@
       class="ele-easy-table-demo"
       ref="refEleEasyTable"
     >
+      <div style="margin-top: 15px">这是表单和表格之间的自定义内容</div>
       <template #slot2="{ row }: { row: any }">
         <!-- <EleEasyTableEdit
           :isEdit="true"

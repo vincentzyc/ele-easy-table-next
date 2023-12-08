@@ -71,6 +71,7 @@
         </el-button>
       </div>
     </el-form>
+    <slot></slot>
     <el-table
       :data="table.list"
       border
