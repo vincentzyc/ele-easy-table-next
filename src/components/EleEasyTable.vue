@@ -1,5 +1,5 @@
 <template>
-  <div class="ele-easy-table" style="overflow: hidden">
+  <div class="ele-easy-table">
     <el-form
       :class="form.class"
       :inline="true"
@@ -138,7 +138,7 @@
     </el-table>
 
     <div
-      style="float: right; margin: 20px 0"
+      style="display: flex; justify-content: end; margin: 20px 0"
       v-if="Object.keys(table).length > 0 && pagination && Array.isArray(table.list) && table.list.length > 0"
     >
       <el-pagination
@@ -156,7 +156,7 @@
 </template>
 
 <script lang="ts">
-import { ElTable,FormInstance } from 'element-plus';
+import { ElTable, FormInstance } from 'element-plus';
 import { computed, defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
