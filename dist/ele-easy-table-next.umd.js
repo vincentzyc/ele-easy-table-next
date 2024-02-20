@@ -2078,13 +2078,10 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=08c3ecfa&ts=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=template&id=a6e10e76&ts=true
 
 const _hoisted_1 = {
-  class: "ele-easy-table",
-  style: {
-    "overflow": "hidden"
-  }
+  class: "ele-easy-table"
 };
 const _hoisted_2 = {
   key: 0,
@@ -2118,7 +2115,8 @@ const _hoisted_10 = {
 const _hoisted_11 = {
   key: 2,
   style: {
-    "float": "right",
+    "display": "flex",
+    "justify-content": "end",
     "margin": "20px 0"
   }
 };
@@ -2282,7 +2280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:pageSize": _ctx.handleSizeChange
   }, typeof _ctx.pagination === 'object' ? _ctx.pagination : {}), null, 16, ["current-page", "layout", "page-size", "page-sizes", "total", "onUpdate:currentPage", "onUpdate:pageSize"])])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)]);
 }
-;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=08c3ecfa&ts=true
+;// CONCATENATED MODULE: ./src/components/EleEasyTable.vue?vue&type=template&id=a6e10e76&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.77.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_@babel+core@7.21.4_webpack@5.77.0/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/ts-loader@9.4.2_typescript@4.5.5_webpack@5.77.0/node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/.pnpm/vue-loader@17.0.1_vue@3.2.47_webpack@5.77.0/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/EleEasyTable.vue?vue&type=script&lang=ts
 
